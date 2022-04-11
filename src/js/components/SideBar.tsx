@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./SideBar.css";
 import "../../css/index.css";
 import { Avatar, IconButton } from "@mui/material";
@@ -7,8 +7,20 @@ import DonutLargeIcon from "@mui/icons-material/DonutLarge";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import SidebarChat from "./SidebarChat";
+import api from "../../utils/api";
 
 function SideBar() {
+  const [rooms, setRooms] = useState<any[]>([]);
+
+  useEffect(() => {
+    (async function () {
+      const axiosResponse = await api.get("/rooms/list");
+      console.log("axiosResponse.data==>", axiosResponse.data);
+      setRooms(axiosResponse.data);
+      console.log("rooms1", rooms);
+    })();
+  }, []);
+
   return (
     <div className="sideBar">
       <div className="sideBar__header">
@@ -34,14 +46,13 @@ function SideBar() {
       </div>
 
       <div className="sideBar__chats">
-        <SidebarChat addNewChat/>
-        <SidebarChat/>
-        <SidebarChat/>
-        <SidebarChat/>
-       
+        <SidebarChat addNewChat />
+        {rooms.map((room) => (
+          <SidebarChat key={room.id} name={room.name} />
+        ))}
       </div>
     </div>
   );
-};
+}
 
 export default SideBar;
