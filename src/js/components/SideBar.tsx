@@ -15,9 +15,9 @@ function SideBar() {
   useEffect(() => {
     (async function () {
       const axiosResponse = await api.get("/rooms/list");
-      console.log("axiosResponse.data==>", axiosResponse.data);
+      console.log("axiosResponse room list==>", axiosResponse.data);
       setRooms(axiosResponse.data);
-      console.log("rooms1", rooms);
+      console.log("response rooms list", rooms);
     })();
   }, []);
 
@@ -48,7 +48,7 @@ function SideBar() {
       <div className="sideBar__chats">
         <SidebarChat addNewChat />
         {rooms.map((room) => (
-          <SidebarChat key={room.id} name={room.name} />
+          <SidebarChat key={room.id} id={room.id} name={room.name} />
         ))}
       </div>
     </div>

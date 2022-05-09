@@ -23,8 +23,11 @@
   padding: 10px;
 }
 .sideBar__searchContainer > input {
-  border: none;
   margin-left: 10px;
+  border: none;
+  flex: 1;
+  /* border-radius: 20px; */
+  
 }
 
 .sideBar__header {

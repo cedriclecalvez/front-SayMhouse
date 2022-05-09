@@ -2,15 +2,15 @@ import Chat from "../components/Chat";
 import SideBar from "../components/SideBar";
 import "./HomePage.css";
 
-const HomePage = () => {
+const ChatPage = () => {
   return (
     <div className="homepage">
       <div className="homepage__body">
         <SideBar />
-        {/* <Chat /> */}
+        <Chat />
       </div>
     </div>
   );
 };
 
-export default HomePage;
+export default ChatPage;
