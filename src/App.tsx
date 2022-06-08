@@ -1,15 +1,23 @@
 import { useState } from "react";
 import Router from "./router";
 import "./css/App.css";
+import SignIn from "./js/components/sign/SignIn";
 
 function App() {
   const [user, setUser] = useState(null);
 
   return (
     <div className="homepage">
-
-    <div className="homepage__body">{!user ? <h1>LOGIN</h1> : <Router></Router>}</div>
-  </div>
+      {!user ? (
+        <>
+          <SignIn></SignIn>
+        </>
+      ) : (
+        <div className="homepage__body">
+          <Router></Router>
+        </div>
+      )}
+    </div>
   );
 }
 
