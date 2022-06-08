@@ -41,7 +41,7 @@ const Chat = () => {
     setSeed(Math.floor(Math.random() * 5000));
 
     return;
-  }, []);
+  }, [roomId]);
 
   const sendMessage = (e: any) => {
     e.preventDefault();

@@ -4,8 +4,9 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import api from "../../utils/api";
 import "./SidebarChat.css";
+import instance from "../../utils/api";
 
-function SidebarChat({ id, name, addNewChat }: any) {
+function SidebarChat({ id, name, addNewChat ,setUpdateRooms}: any) {
   const [seed, setSeed] = useState<any>("");
 
   // function to return an random avatar
@@ -15,9 +16,14 @@ function SidebarChat({ id, name, addNewChat }: any) {
 
   const createChat = async () => {
     const roomName = prompt("Please enter a name for chat room");
+    const roomNameObject = { name: roomName };
+
     if (roomName) {
       try {
-        const axiosResponse = await api.post("/rooms/register", roomName);
+        const axiosResponse = await api.post("/rooms/register", roomNameObject);
+        console.log("axiosResponse===>", axiosResponse);
+        // to change state of parent child
+        setUpdateRooms(true); //
       } catch (error) {
         console.error(error);
       }

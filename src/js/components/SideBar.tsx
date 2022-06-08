@@ -11,7 +11,19 @@ import api from "../../utils/api";
 
 function SideBar() {
   const [rooms, setRooms] = useState<any[]>([]);
+  const [addRoom, setAddRoom] = useState<boolean>(false);
 
+  // to display directly the new list of rooms when user create in the child component
+  useEffect(() => {
+    (async function () {
+      const axiosResponse = await api.get("/rooms/list");
+      console.log("axiosResponse room list==>", axiosResponse.data);
+      setRooms(axiosResponse.data);
+      console.log("response rooms list", rooms);
+      setAddRoom(false)
+    })();
+  }, [addRoom]);
+  
   useEffect(() => {
     (async function () {
       const axiosResponse = await api.get("/rooms/list");
@@ -46,7 +58,7 @@ function SideBar() {
       </div>
 
       <div className="sideBar__chats">
-        <SidebarChat addNewChat />
+        <SidebarChat addNewChat setUpdateRooms={setAddRoom} />
         {rooms.map((room) => (
           <SidebarChat key={room.id} id={room.id} name={room.name} />
         ))}
