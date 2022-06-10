@@ -33,13 +33,21 @@ function SideBar() {
     })();
   }, []);
 
+  async function handleClickTofindAllUsers(){
+    const axiosResponse = await api.get("/users/allUsers");
+    console.log("axiosResponse users list==>", axiosResponse.data);
+
+
+  }
+
   return (
     <div className="sideBar">
       <div className="sideBar__header">
         <Avatar />
         <div className="sidebar__headerRight">
+          <button onClick={handleClickTofindAllUsers}></button>
           <IconButton>
-            <DonutLargeIcon />
+            <DonutLargeIcon/>
           </IconButton>
           <IconButton>
             <ChatIcon />

@@ -20,6 +20,8 @@ import MapsHomeWorkOutlinedIcon from "@mui/icons-material/MapsHomeWorkOutlined";
 
 import "./SignIn.css";
 import { Alert } from "@mui/material";
+import {useDispatch} from "react-redux"
+import { login } from "../../../store/user.reducer";
 const theme = createTheme();
 
 export default function SignInMui() {
@@ -30,6 +32,8 @@ export default function SignInMui() {
     React.useState<Number | null>(null);
   const [alert, setAlert] = React.useState(false);
   const [alertContent, setAlertContent] = React.useState("");
+
+  const dispatch = useDispatch()
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -59,7 +63,12 @@ export default function SignInMui() {
 
       console.log(axiosResponse.data);
       console.log("statuslog", axiosResponse.status);
-      setResponseBddStatus(axiosResponse.status);
+
+      console.log("axiosResponse.headers.authorization===>",axiosResponse.headers.authorization.substring(7, axiosResponse.headers.authorization.length));
+      const user: any = axiosResponse.headers.authorization.substring(7, axiosResponse.headers.authorization.length)
+
+      setResponseBddStatus(axiosResponse.status); 
+      dispatch(login(user))
     } catch (err: any) {
       console.error(err.response.data);
       setAlertContent(err.response.data.message);
@@ -68,13 +77,14 @@ export default function SignInMui() {
   };
 
   if (responseBddStatus === 200) {
-    return <Navigate to="/" />;
+    return <Navigate to="/HomePage" />;
   }
 
   return (
     <div>
       <ThemeProvider theme={theme}>
-        <Container component="main" maxWidth="xs">
+        
+        <Container component="main" maxWidth="xs"  >
           <CssBaseline />
           {alert && <Alert severity="error">{alertContent}</Alert>}
 
@@ -158,5 +168,5 @@ export default function SignInMui() {
         </Container>
       </ThemeProvider>
     </div>
-  );
+  )
 }

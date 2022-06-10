@@ -4,10 +4,9 @@ import "./HomePage.css";
 
 const HomePage = () => {
   return (
-    <div className="homepage">
+    <div>
       <div className="homepage__body">
         <SideBar />
-        {/* <Chat /> */}
       </div>
     </div>
   );
