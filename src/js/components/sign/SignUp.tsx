@@ -67,7 +67,7 @@ export default function SignUp() {
 
   
   if(responseBddStatus===201){
-    return <Navigate to='/'/>
+    return <Navigate to='/homePage'/>
   }
  
 

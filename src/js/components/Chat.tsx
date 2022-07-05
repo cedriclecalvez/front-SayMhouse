@@ -14,6 +14,7 @@ const Chat = () => {
   const [seed, setSeed] = useState<any>("");
   const { roomId } = useParams();
   const [roomName, setRoomName] = useState<any>("");
+  const [messages, setMessages] = useState<any>([]);
 
   useEffect(() => {
     // if you click on room in the sidebarchat you take the information in dabase
@@ -31,6 +32,15 @@ const Chat = () => {
             axiosResponse.data[0].name
           );
         })();
+        // (async function () {
+        //   const axiosResponse = await api.post(`/messages,roomName`);
+        //   console.log("axiosResponse oneRoom ==>", axiosResponse.data);
+        //   setRoomName(axiosResponse.data[0].name);
+        //   console.log(
+        //     "axiosResponse one room name===>",
+        //     axiosResponse.data[0].name
+        //   );
+        // })();
       } catch (error) {
         console.error(error);
       }
@@ -73,7 +83,7 @@ const Chat = () => {
 
       <div className="chat__body">
         <p className={`chat__message ${true && "chat__receiver"}`}>
-          <span className="chat__name">cedric</span>
+          <span className="chat__name">Admin</span>
           hello world
           <span className="chat__timestamp">3:52pm</span>
         </p>
@@ -87,10 +97,10 @@ const Chat = () => {
               setInput(e.target.value);
             }}
             type="text"
-            placeholder="Type a message"
+            placeholder="écrit ton message"
           />
           <button type="submit" onClick={sendMessage}>
-            Send a message
+            Envoie un message
           </button>
         </form>
         <MicIcon />

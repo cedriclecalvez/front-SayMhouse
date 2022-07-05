@@ -12,7 +12,7 @@
 .homepage {
   display: grid;
   place-items: center;
-  background-color: #dadbd3;
+  background-color: white;
   height: 100vh;
 }
 .homepage__body {

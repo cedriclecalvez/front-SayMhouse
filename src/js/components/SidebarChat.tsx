@@ -38,13 +38,13 @@ function SidebarChat({ id, name, addNewChat ,setUpdateRooms}: any) {
         <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`} />
         <div className="sidebarChat__info">
           <h2>{name}</h2>
-          <p>last message ...</p>
+          <p>Dernier message ...</p>
         </div>
       </div>
     </Link>
   ) : (
     <div onClick={createChat} className="sidebarChat">
-      <h2>Add a new chat</h2>
+      <h3>Une question? Ajoute un ticket</h3>
     </div>
   );
 }

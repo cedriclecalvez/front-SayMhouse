@@ -61,7 +61,7 @@ function SideBar() {
       <div className="sideBar__search">
         <div className="sideBar__searchContainer">
           <SearchOutlinedIcon />
-          <input placeholder="Search or start new chat" type="text" />
+          <input placeholder="Cherche un ticket" type="text" />
         </div>
       </div>
 

@@ -37,7 +37,7 @@
 }
 .chat__receiver {
   margin-left: auto;
-  background-color: #dcf8c6;
+  background-color:rgb(89, 171, 248);
 }
 .chat__timestamp {
   margin-left: 10px;
@@ -50,7 +50,8 @@
 }
 .chat__body {
   flex: 1;
-  background-image: url("../../../public/sol-marron1.jpg");
+  /* background-image: url("../../../public/sol-marron1.jpg"); */
+  background-color: rgb(159, 209, 255);
   background-repeat: repeat;
   background-position: center;
   padding: 30px;
