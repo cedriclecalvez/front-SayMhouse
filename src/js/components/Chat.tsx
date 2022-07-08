@@ -58,7 +58,7 @@ const Chat = () => {
 
         <div className="chat__headerInfo">
           <h3>{roomName}</h3>
-          <p>Last seen at ...</p>
+          <p>Vu pour la dernière fois à ...</p>
         </div>
         <div className="chat__headerRight">
           <IconButton>
