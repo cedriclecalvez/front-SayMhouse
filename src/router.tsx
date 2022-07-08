@@ -13,19 +13,13 @@ const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<LoginPage />} />
+        <Route path="/" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
-        {/* <Route
-          path="/"
-          element={<PrivateRoute component={<LoginPage />} />}
-        /> */}
         <Route
           path="/HomePage"
           element={<PrivateRoute component={<HomePage />} />}
         />
-        {/* <Route path="/HomePage" element={<HomePage />} /> */}
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/rooms/:roomId" element={<ChatPage />} />
+        <Route path="/ticket/:roomId" element={<ChatPage />} />
       </Routes>
     </BrowserRouter>
   );
