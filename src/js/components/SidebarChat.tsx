@@ -20,7 +20,7 @@ function SidebarChat({ id, name, addNewChat ,setUpdateRooms}: any) {
 
     if (roomName) {
       try {
-        const axiosResponse = await api.post("/rooms/register", roomNameObject);
+        const axiosResponse = await api.post("/ticket/register", roomNameObject);
         console.log("axiosResponse===>", axiosResponse);
         // to change state of parent child
         setUpdateRooms(true); //

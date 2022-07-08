@@ -18,6 +18,9 @@ const theme = createTheme();
 export default function SignUp() {
   const [errPass, seterrPass] = React.useState<String | null>(null)
   const [isErrorEmail, setIsErrorEmail] = React.useState<String | null>(null)
+  const [isErrorFirstname, setIsErrorFirstname] = React.useState<String | null>(null)
+  const [isErrorLastname, setIsErrorLastname] = React.useState<String | null>(null)
+  const [isErrorAddress, setIsErrorAddress] = React.useState<String | null>(null)
   const [responseBddStatus,setResponseBddStatus]= React.useState<Number>(404);
 
 
@@ -26,9 +29,34 @@ export default function SignUp() {
     const data = new FormData(event.currentTarget);
     // eslint-disable-next-line no-console
     const body = {
+      firstname: data.get('firstname'),
+      lastname: data.get('lastname'),
+      address: data.get('address'),
       email: data.get('email'),
       password: data.get('password')
     }
+
+    if(!String(data.get('firstname')).length) {      
+      setIsErrorFirstname('Your firstname is invalid or empty!')
+      return false
+    } else {
+      setIsErrorFirstname(null)
+    }
+    if(!String(data.get('lastname')).length) {      
+      setIsErrorLastname('Your lastname is invalid or empty!')
+      return false
+    } else {
+      setIsErrorLastname(null)
+    }
+    if(!String(data.get('address')).length) {      
+      setIsErrorAddress('Your address is invalid or empty!')
+      return false
+    } else {
+      setIsErrorAddress(null)
+    }
+
+
+
 
     if(!String(data.get('email')).length) {      
       setIsErrorEmail('Your email is invalid or empty!')
@@ -45,7 +73,7 @@ export default function SignUp() {
     }
 
     try {
-      const axiosResponse = await api.post("/users/auth/register", body)
+      const axiosResponse = await api.post("/user/auth/register", body)
       
       console.log(axiosResponse.data);
       console.log(axiosResponse.status);
@@ -87,19 +115,55 @@ export default function SignUp() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign up
+            S'inscrire
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <TextField
+                  error={isErrorFirstname ? true : false}
+                  required
+                  fullWidth
+                  id="firstname"
+                  label="Prénom"
+                  name="firstname"
+                  autoComplete="firstname"
+                  helperText={isErrorFirstname ? isErrorFirstname : null}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  error={isErrorLastname ? true : false}
+                  required
+                  fullWidth
+                  id="lastname"
+                  label="Nom"
+                  name="lastname"
+                  autoComplete="lastname"
+                  helperText={isErrorLastname ? isErrorLastname : null}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  error={isErrorAddress ? true : false}
+                  required
+                  fullWidth
+                  id="address"
+                  label="Adresse complète : n°, rue, batiment, ét, pte, ville"
+                  name="address"
+                  autoComplete="address"
+                  helperText={isErrorAddress ? isErrorAddress : null}
+                />
+              </Grid>
               <Grid item xs={12}>
                 <TextField
                   error={isErrorEmail ? true : false}
                   required
                   fullWidth
                   id="email"
-                  label="Email Address"
+                  label="Adresse mail"
                   name="email"
-                  autoComplete="email"
+                  autoComplete="emil"
                   helperText={isErrorEmail ? isErrorEmail : null}
                 />
               </Grid>
@@ -109,7 +173,7 @@ export default function SignUp() {
                   required
                   fullWidth
                   name="password"
-                  label="Password"
+                  label="Mot de Passe"
                   type="password"
                   id="password"
                   autoComplete="new-password"
@@ -121,7 +185,7 @@ export default function SignUp() {
                   required
                   fullWidth
                   name="confirm-password"
-                  label="Confirm your password"
+                  label="Confirmer le mot de passe"
                   type="password"
                   id="confirm-password"
                   autoComplete="new-password"
@@ -134,13 +198,13 @@ export default function SignUp() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign Up
+              Enregistrer
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
                 <Lien to="/login">
                   <Link  variant="body2">
-                    Already have an account? Sign in
+                    J'ai déjà un compte? Se logger
                   </Link>
                 </Lien>
               </Grid>

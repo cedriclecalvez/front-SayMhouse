@@ -34,7 +34,7 @@ instance.interceptors.response.use(
     }
     try {
       // ask refresh token
-      const response = await instance.get("/users/refresh");
+      const response = await instance.get("/user/refresh");
       store.dispatch(login(response.data));
       // add field hasRefreshToken
       error.hasRefreshToken = true;

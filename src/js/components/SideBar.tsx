@@ -16,7 +16,7 @@ function SideBar() {
   // to display directly the new list of rooms when user create in the child component
   useEffect(() => {
     (async function () {
-      const axiosResponse = await api.get("/rooms/list");
+      const axiosResponse = await api.get("/ticket/list");
       console.log("axiosResponse room list==>", axiosResponse.data);
       setRooms(axiosResponse.data);
       console.log("response rooms list", rooms);
@@ -26,15 +26,15 @@ function SideBar() {
   
   useEffect(() => {
     (async function () {
-      const axiosResponse = await api.get("/rooms/list");
+      const axiosResponse = await api.get("/ticket/list");
       console.log("axiosResponse room list==>", axiosResponse.data);
       setRooms(axiosResponse.data);
-      console.log("response rooms list", rooms);
+      console.log("response rooms list after add room", rooms);
     })();
   }, []);
 
   async function handleClickTofindAllUsers(){
-    const axiosResponse = await api.get("/users/allUsers");
+    const axiosResponse = await api.get("/user/allUsers");
     console.log("axiosResponse users list==>", axiosResponse.data);
 
 

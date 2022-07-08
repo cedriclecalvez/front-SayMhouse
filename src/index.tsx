@@ -12,7 +12,7 @@ const isAuth = async () => {
   try {
     console.log("you asked to refresh");
     
-    const response = await api.get('/users/refresh');
+    const response = await api.get('/user/refresh');
     console.log("response refresh route",response);
     console.log("response refresh route",response.data);
     

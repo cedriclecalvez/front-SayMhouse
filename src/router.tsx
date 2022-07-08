@@ -14,6 +14,7 @@ const Router = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LoginPage />} />
+        <Route path="/login" element={<LoginPage />} />
         {/* <Route
           path="/"
           element={<PrivateRoute component={<LoginPage />} />}
@@ -35,6 +36,6 @@ export default Router;
 const PrivateRoute = ({ component: Component }: { component: JSX.Element }) => {
   const userState = useSelector((state: { user: userStore }) => state.user);
   console.log("check route ok");
-  
+
   return !userState.isLogged ? <Navigate to="/HomePage" /> : Component;
 };

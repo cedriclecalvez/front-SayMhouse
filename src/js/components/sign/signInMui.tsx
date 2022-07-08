@@ -59,7 +59,7 @@ export default function SignInMui() {
     }
 
     try {
-      const axiosResponse = await api.post("/users/auth/login", body);
+      const axiosResponse = await api.post("/user/auth/login", body);
 
       console.log(axiosResponse.data);
       console.log("statuslog", axiosResponse.status);

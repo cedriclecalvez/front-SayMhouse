@@ -24,7 +24,7 @@ const Chat = () => {
       //take the info from BDD and setRoomId
       try {
         (async function () {
-          const axiosResponse = await api.get(`/rooms/one/${roomId}`);
+          const axiosResponse = await api.get(`/ticket/one/${roomId}`);
           console.log("axiosResponse oneRoom ==>", axiosResponse.data);
           setRoomName(axiosResponse.data[0].name);
           console.log(
@@ -32,15 +32,7 @@ const Chat = () => {
             axiosResponse.data[0].name
           );
         })();
-        // (async function () {
-        //   const axiosResponse = await api.post(`/messages,roomName`);
-        //   console.log("axiosResponse oneRoom ==>", axiosResponse.data);
-        //   setRoomName(axiosResponse.data[0].name);
-        //   console.log(
-        //     "axiosResponse one room name===>",
-        //     axiosResponse.data[0].name
-        //   );
-        // })();
+    
       } catch (error) {
         console.error(error);
       }
