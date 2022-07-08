@@ -8,6 +8,7 @@ import "./css/App.css";
 import HomePage from "./js/pages/HomePage";
 import LoginPage from "./js/pages/LoginPage";
 import RegisterPage from "./js/pages/RegisterPage";
+import AdminPage from "./js/pages/AdminPage"
 
 const Router = () => {
   return (
@@ -21,6 +22,12 @@ const Router = () => {
           element={<PrivateRoute component={<HomePage />} />}
         />
         <Route path="/ticket/:roomId" element={<ChatPage />} />
+        <Route
+          path="/AdminPage"
+          element={<PrivateRoute component={<AdminPage />} />}
+        />
+        <Route path="/admin/ticket/:roomId" element={<ChatPage />} />
+
       </Routes>
     </BrowserRouter>
   );
