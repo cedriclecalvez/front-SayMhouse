@@ -104,8 +104,8 @@ export default function SignInMui() {
             {/* <Avatar sx={{ m: 1, bgcolor: "primary.main" }}>
               <MapsHomeWorkOutlinedIcon />
             </Avatar> */}
-            <Typography component="h1" variant="h4">
-              Sign in to SayMhouse
+            <Typography component="h1" variant="h5">
+              Se connecter à SayMhouse
             </Typography>
             <Box
               component="form"
@@ -119,7 +119,7 @@ export default function SignInMui() {
                 required
                 fullWidth
                 id="email"
-                label="Email Address"
+                label="Adresse mail"
                 name="email"
                 autoComplete="email"
                 autoFocus
@@ -131,37 +131,37 @@ export default function SignInMui() {
                 required
                 fullWidth
                 name="password"
-                label="Password"
+                label="Mot de passe"
                 type="password"
                 id="password"
                 autoComplete="current-password"
                 helperText={errPass ? errPass : null}
               />
-              <FormControlLabel
+              {/* <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
                 label="Remember me"
-              />
+              /> */}
               <Button
                 type="submit"
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
               >
-                Sign In
+                Se connecter
               </Button>
               <Grid container>
                 <Grid item xs>
-                  <Link href="#" variant="body2">
+                  {/* <Link href="#" variant="body2">
                     Forgot password?
-                  </Link>
+                  </Link> */}
                 </Grid>
-                {/* <Grid item>
+                <Grid item>
                 <Lien  to="/register">
                   <Link variant="body2">
-                    {"Don't have an account? Sign Up"}
+                    {"Je n'ai pas de compte ? Inscription"}
                   </Link>
                 </Lien>
-              </Grid> */}
+              </Grid>
               </Grid>
             </Box>
           </Box>

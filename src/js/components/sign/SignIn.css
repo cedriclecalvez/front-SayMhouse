@@ -19,7 +19,7 @@
 }
 .login__img{
   object-fit: contain;
-  height: 150px;
+  height: 250px;
   margin-bottom: 20px;
 }
 .login__container > button {

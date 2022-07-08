@@ -6,7 +6,7 @@ const LoginPage = () => {
   return (
     <div className="login">
       <div className="login__container">
-        <SignInMui></SignInMui>;
+        <SignInMui></SignInMui>
       </div>
     </div>
   );
