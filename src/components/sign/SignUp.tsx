@@ -93,7 +93,7 @@ export default function SignUp() {
   };
 
   if (responseBddStatus === 201) {
-    return <Navigate to="/homePage" />;
+    return <Navigate to="/login" />;
   }
 
   return (

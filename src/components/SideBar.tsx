@@ -13,31 +13,28 @@ function SideBar() {
   const [rooms, setRooms] = useState<any[]>([]);
   const [addRoom, setAddRoom] = useState<boolean>(false);
 
-  // to display directly the new list of rooms when user create in the child component
   useEffect(() => {
     (async function () {
-      const axiosResponse = await api.get("/ticket/list");
-      console.log("axiosResponse room list==>", axiosResponse.data);
+      const axiosResponse = await api.get("/ticket/auth/myTickets");
       setRooms(axiosResponse.data);
-      console.log("response rooms list", rooms);
-      setAddRoom(false)
-    })();
-  }, [addRoom]);
-  
-  useEffect(() => {
-    (async function () {
-      const axiosResponse = await api.get("/ticket/list");
-      console.log("axiosResponse room list==>", axiosResponse.data);
-      setRooms(axiosResponse.data);
-      console.log("response rooms list after add room", rooms);
+      console.log("useEffect : all my tickets", rooms);
     })();
   }, []);
 
-  async function handleClickTofindAllUsers(){
+  // to display directly the new list of rooms when user create in the child component
+  useEffect(() => {
+    (async function () {
+      const axiosResponse = await api.get("/ticket/auth/myTickets");
+
+      setRooms(axiosResponse.data);
+      console.log("list tickets after creation new ticket", rooms);
+      setAddRoom(false);
+    })();
+  }, [addRoom]);
+
+  async function handleClickTofindAllUsers() {
     const axiosResponse = await api.get("/user/allUsers");
     console.log("axiosResponse users list==>", axiosResponse.data);
-
-
   }
 
   return (
@@ -47,7 +44,7 @@ function SideBar() {
         <div className="sidebar__headerRight">
           <button onClick={handleClickTofindAllUsers}></button>
           <IconButton>
-            <DonutLargeIcon/>
+            <DonutLargeIcon />
           </IconButton>
           <IconButton>
             <ChatIcon />

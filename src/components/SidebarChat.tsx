@@ -16,6 +16,7 @@ function SidebarChat({ id, name, addNewChat, setUpdateRooms }: any) {
 
   const createChat = async () => {
     const roomName = prompt("Please enter a name for chat room");
+
     const roomNameObject = { name: roomName };
 
     if (roomName) {
@@ -24,7 +25,7 @@ function SidebarChat({ id, name, addNewChat, setUpdateRooms }: any) {
           "/ticket/register",
           roomNameObject
         );
-        console.log("axiosResponse===>", axiosResponse);
+        console.log("axiosResponse to create a ticket ===>", axiosResponse.statusText);
         // to change state of parent child
         setUpdateRooms(true); //
       } catch (error) {
@@ -33,7 +34,6 @@ function SidebarChat({ id, name, addNewChat, setUpdateRooms }: any) {
       // do some stuff
     }
   };
-  console.log("addNewChat", addNewChat);
 
   return !addNewChat ? (
     <Link to={`/ticket/${id}`}>

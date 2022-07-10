@@ -10,7 +10,7 @@ const instance = axios.create({
 
 instance.interceptors.request.use((request) => {
   const state = store.getState();
-  console.log("state: ",state.user.user);
+  console.log("state from interceptors: ",state.user.user);
   
   
   if (request.headers)
