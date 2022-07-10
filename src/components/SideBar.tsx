@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import "./SideBar.css";
-import "../../css/index.css";
+import "../css/index.css";
 import { Avatar, IconButton } from "@mui/material";
 import ChatIcon from "@mui/icons-material/Chat";
 import DonutLargeIcon from "@mui/icons-material/DonutLarge";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
-import SideBarChatAdmin from "./SideBarChatAdmin";
-import api from "../../utils/api";
+import SidebarChat from "./SidebarChat";
+import api from "../utils/api";
 
-function SideBarAdmin() {
+function SideBar() {
   const [rooms, setRooms] = useState<any[]>([]);
   const [addRoom, setAddRoom] = useState<boolean>(false);
 
@@ -20,10 +20,10 @@ function SideBarAdmin() {
       console.log("axiosResponse room list==>", axiosResponse.data);
       setRooms(axiosResponse.data);
       console.log("response rooms list", rooms);
-      setAddRoom(false);
+      setAddRoom(false)
     })();
   }, [addRoom]);
-
+  
   useEffect(() => {
     (async function () {
       const axiosResponse = await api.get("/ticket/list");
@@ -33,9 +33,11 @@ function SideBarAdmin() {
     })();
   }, []);
 
-  async function handleClickTofindAllUsers() {
+  async function handleClickTofindAllUsers(){
     const axiosResponse = await api.get("/user/allUsers");
     console.log("axiosResponse users list==>", axiosResponse.data);
+
+
   }
 
   return (
@@ -45,7 +47,7 @@ function SideBarAdmin() {
         <div className="sidebar__headerRight">
           <button onClick={handleClickTofindAllUsers}></button>
           <IconButton>
-            <DonutLargeIcon />
+            <DonutLargeIcon/>
           </IconButton>
           <IconButton>
             <ChatIcon />
@@ -64,13 +66,13 @@ function SideBarAdmin() {
       </div>
 
       <div className="sideBar__chats">
-        <SideBarChatAdmin addNewChat setUpdateRooms={setAddRoom} />
+        <SidebarChat addNewChat setUpdateRooms={setAddRoom} />
         {rooms.map((room) => (
-          <SideBarChatAdmin key={room.id} id={room.id} name={room.name} />
+          <SidebarChat key={room.id} id={room.id} name={room.name} />
         ))}
       </div>
     </div>
   );
 }
 
-export default SideBarAdmin;
+export default SideBar;

@@ -14,14 +14,14 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Link as Lien, Navigate } from "react-router-dom";
-import api from "../../../utils/api";
+import api from "../../utils/api";
 // import LOGIN_SUCCESS from '../../..store/types'
 import MapsHomeWorkOutlinedIcon from "@mui/icons-material/MapsHomeWorkOutlined";
 
 import "./SignIn.css";
 import { Alert } from "@mui/material";
 import {useDispatch} from "react-redux"
-import { login } from "../../../store/user.reducer";
+import { login } from "../../store/user.reducer";
 const theme = createTheme();
 
 export default function SignInMui() {
@@ -90,7 +90,6 @@ export default function SignInMui() {
 
           <Box
             sx={{
-              marginTop: 8,
               display: "flex",
               flexDirection: "column",
               alignItems: "center",

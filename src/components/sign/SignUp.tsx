@@ -11,7 +11,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Link as Lien, Navigate } from "react-router-dom";
-import api from "../../../utils/api";
+import api from "../../utils/api";
 import "./SignUp.css";
 
 const theme = createTheme();

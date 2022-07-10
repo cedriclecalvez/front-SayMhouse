@@ -7,7 +7,7 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import MicIcon from "@mui/icons-material/Mic";
 import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon";
 import { useParams } from "react-router-dom";
-import api from "../../utils/api";
+import api from "../utils/api";
 
 const Chat = () => {
   const [input, setInput] = useState<string>("");

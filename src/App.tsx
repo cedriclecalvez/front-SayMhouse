@@ -1,6 +1,6 @@
 import Router from "./router";
 import "./css/App.css";
-import SignIn from "./js/components/sign/SignIn";
+import SignIn from "./components/sign/SignIn";
 
 function App() {
 

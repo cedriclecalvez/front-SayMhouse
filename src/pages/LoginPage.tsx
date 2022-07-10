@@ -1,12 +1,14 @@
 import React from "react";
 import SignInMui from "../components/sign/signInMui";
-import "../components/sign/SignIn.css";
+import "./LoginPage.css";
+import Footer from "./partials/Footer";
 
 const LoginPage = () => {
   return (
     <div className="login">
       <div className="login__container">
-        <SignInMui></SignInMui>
+        <SignInMui />
+        <Footer />
       </div>
     </div>
   );

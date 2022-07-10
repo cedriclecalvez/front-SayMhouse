@@ -6,10 +6,10 @@ import ChatIcon from "@mui/icons-material/Chat";
 import DonutLargeIcon from "@mui/icons-material/DonutLarge";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
-import SidebarChat from "./SidebarChat";
-import api from "../../utils/api";
+import SideBarChatAdmin from "./SideBarChatAdmin";
+import api from "../utils/api";
 
-function SideBar() {
+function SideBarAdmin() {
   const [rooms, setRooms] = useState<any[]>([]);
   const [addRoom, setAddRoom] = useState<boolean>(false);
 
@@ -20,10 +20,10 @@ function SideBar() {
       console.log("axiosResponse room list==>", axiosResponse.data);
       setRooms(axiosResponse.data);
       console.log("response rooms list", rooms);
-      setAddRoom(false)
+      setAddRoom(false);
     })();
   }, [addRoom]);
-  
+
   useEffect(() => {
     (async function () {
       const axiosResponse = await api.get("/ticket/list");
@@ -33,11 +33,9 @@ function SideBar() {
     })();
   }, []);
 
-  async function handleClickTofindAllUsers(){
+  async function handleClickTofindAllUsers() {
     const axiosResponse = await api.get("/user/allUsers");
     console.log("axiosResponse users list==>", axiosResponse.data);
-
-
   }
 
   return (
@@ -47,7 +45,7 @@ function SideBar() {
         <div className="sidebar__headerRight">
           <button onClick={handleClickTofindAllUsers}></button>
           <IconButton>
-            <DonutLargeIcon/>
+            <DonutLargeIcon />
           </IconButton>
           <IconButton>
             <ChatIcon />
@@ -66,13 +64,13 @@ function SideBar() {
       </div>
 
       <div className="sideBar__chats">
-        <SidebarChat addNewChat setUpdateRooms={setAddRoom} />
+        <SideBarChatAdmin addNewChat setUpdateRooms={setAddRoom} />
         {rooms.map((room) => (
-          <SidebarChat key={room.id} id={room.id} name={room.name} />
+          <SideBarChatAdmin key={room.id} id={room.id} name={room.name} />
         ))}
       </div>
     </div>
   );
 }
 
-export default SideBar;
+export default SideBarAdmin;

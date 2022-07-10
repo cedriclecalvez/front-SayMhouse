@@ -2,11 +2,11 @@ import { Avatar, dividerClasses } from "@mui/material";
 import { create } from "@mui/material/styles/createTransitions";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import api from "../../utils/api";
+import api from "../utils/api";
 import "./SidebarChat.css";
-import instance from "../../utils/api";
+import instance from "../utils/api";
 
-function SideBarChatAdmin({ id, name, addNewChat, setUpdateRooms }: any) {
+function SidebarChat({ id, name, addNewChat, setUpdateRooms }: any) {
   const [seed, setSeed] = useState<any>("");
 
   // function to return an random avatar
@@ -36,7 +36,7 @@ function SideBarChatAdmin({ id, name, addNewChat, setUpdateRooms }: any) {
   console.log("addNewChat", addNewChat);
 
   return !addNewChat ? (
-    <Link to={`/admin/ticket/${id}`}>
+    <Link to={`/ticket/${id}`}>
       <div className="sidebarChat">
         <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`} />
         <div className="sidebarChat__info">
@@ -47,9 +47,9 @@ function SideBarChatAdmin({ id, name, addNewChat, setUpdateRooms }: any) {
     </Link>
   ) : (
     <div onClick={createChat} className="sidebarChat">
-      <h3>Créer un ticket</h3>
+      <h2>Créer un ticket</h2>
     </div>
   );
 }
 
-export default SideBarChatAdmin;
+export default SidebarChat;

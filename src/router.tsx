@@ -1,14 +1,14 @@
 import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
-import ChatPage from "./js/pages/ChatPage";
+import ChatPage from "./pages/ChatPage";
 import { useSelector } from "react-redux";
 import { userStore } from "./utils/types/user.types";
 
-import "./js/pages/HomePage.css";
+import "./pages/HomePage.css";
 import "./css/App.css";
-import HomePage from "./js/pages/HomePage";
-import LoginPage from "./js/pages/LoginPage";
-import RegisterPage from "./js/pages/RegisterPage";
-import AdminPage from "./js/pages/AdminPage"
+import HomePage from "./pages/HomePage";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import AdminPage from "./pages/AdminPage"
 
 const Router = () => {
   return (
