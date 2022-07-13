@@ -1,4 +1,4 @@
-import { Avatar, dividerClasses } from "@mui/material";
+import { Avatar, dividerClasses, Tooltip } from "@mui/material";
 import { create } from "@mui/material/styles/createTransitions";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -36,19 +36,22 @@ function SideBarChatAdmin({ id, name, addNewChat, setUpdateRooms }: any) {
   console.log("addNewChat", addNewChat);
 
   return !addNewChat ? (
-    <Link to={`/admin/ticket/${id}`}>
-      <div className="sidebarChat">
-        <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`} />
-        <div className="sidebarChat__info">
-          <h2>{name}</h2>
-          <p>Dernier message ...</p>
+    <Link to={`/ticket/${id}`}>
+      <Tooltip title="Clic pour voir la discussion">
+        <div className="sidebarChat">
+          <div className="sidebarChat__info">
+            <h2>{name}</h2>
+            <p>Dernier message ...</p>
+          </div>
         </div>
-      </div>
+      </Tooltip>
     </Link>
   ) : (
-    <div onClick={createChat} className="sidebarChat">
-      <h3>Créer un ticket</h3>
-    </div>
+    <Tooltip title="Clic pour créer un ticket">
+      <div onClick={createChat} className="sidebarChat">
+        <h3>Créer un ticket</h3>
+      </div>
+    </Tooltip>
   );
 }
 

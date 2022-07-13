@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./SideBar.css";
 import "../css/index.css";
-import { Avatar, IconButton } from "@mui/material";
+import { Avatar, IconButton, Tooltip } from "@mui/material";
 import ChatIcon from "@mui/icons-material/Chat";
 import DonutLargeIcon from "@mui/icons-material/DonutLarge";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
@@ -42,7 +42,11 @@ function SideBar() {
       <div className="sideBar__header">
         <Avatar />
         <div className="sidebar__headerRight">
+       <Tooltip title="requete pour list users">
+
           <button onClick={handleClickTofindAllUsers}></button>
+       </Tooltip>
+
           <IconButton>
             <DonutLargeIcon />
           </IconButton>

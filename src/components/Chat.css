@@ -51,7 +51,7 @@
 .chat__body {
   flex: 1;
   /* background-image: url("../../../public/sol-marron1.jpg"); */
-  background-color: rgb(159, 209, 255);
+  background-color: #C8E5DC;
   background-repeat: repeat;
   background-position: center;
   padding: 30px;

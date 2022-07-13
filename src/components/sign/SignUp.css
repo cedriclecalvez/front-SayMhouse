@@ -1,6 +1,9 @@
 .register__img{
     object-fit: contain;
-    height: 400px;
-    /* margin-bottom: 20px; */
+    /* height: 400px; */
+    max-width: 100%;
+    place-items: center;
+   
+  
     
   }

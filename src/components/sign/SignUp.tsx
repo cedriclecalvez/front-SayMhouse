@@ -13,6 +13,10 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Link as Lien, Navigate } from "react-router-dom";
 import api from "../../utils/api";
 import "./SignUp.css";
+import Alert from "@mui/material/Alert";
+import Snackbar from "material-ui/Snackbar";
+import CloseIcon from "@mui/icons-material/Close";
+import Stack from "@mui/material/Stack";
 
 const theme = createTheme();
 
@@ -29,6 +33,7 @@ export default function SignUp() {
     null
   );
   const [responseBddStatus, setResponseBddStatus] = React.useState<Number>(404);
+
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -84,6 +89,7 @@ export default function SignUp() {
 
       if (axiosResponse.status === 201) {
         setResponseBddStatus(201);
+      
       } else {
         console.log("save data doesnt work");
       }
@@ -93,17 +99,17 @@ export default function SignUp() {
   };
 
   if (responseBddStatus === 201) {
-    return <Navigate to="/login" />;
+    return (
+      <Navigate to="/login"/>
+    );
+ 
   }
 
   return (
     <ThemeProvider theme={theme}>
-      <Grid
-        container
-        alignItems="center"
-        justifyContent="center"
-      >
-        <Grid item xs={6} md={4}>
+      <Grid container alignItems="center" justifyContent="center">
+   
+        <Grid item xs={4} >
           <img
             className="register__img"
             src="https://scalebranding.com/wp-content/uploads/2021/08/Chat-House-Logo.jpg"

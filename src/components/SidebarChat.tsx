@@ -1,4 +1,4 @@
-import { Avatar, dividerClasses } from "@mui/material";
+import { Avatar, dividerClasses, Tooltip } from "@mui/material";
 import { create } from "@mui/material/styles/createTransitions";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -37,17 +37,23 @@ function SidebarChat({ id, name, addNewChat, setUpdateRooms }: any) {
 
   return !addNewChat ? (
     <Link to={`/ticket/${id}`}>
-      <div className="sidebarChat">
+       <Tooltip title="Clic pour voir la discussion">
+         <div className="sidebarChat">
         <div className="sidebarChat__info">
           <h2>{name}</h2>
           <p>Dernier message ...</p>
         </div>
       </div>
+       </Tooltip>
+     
     </Link>
   ) : (
-    <div onClick={createChat} className="sidebarChat">
+    <Tooltip title="Clic pour créer un ticket">
+<div onClick={createChat} className="sidebarChat">
       <h2>Créer un ticket</h2>
     </div>
+</Tooltip>
+    
   );
 }
 
