@@ -43,11 +43,14 @@ function SideBar() {
     const axiosResponse = await api.get("/user/logout");
     console.log("axiosResponse LOGOUT==>", axiosResponse);
     console.log("axiosResponse", axiosResponse.status);
-    
-    if(axiosResponse.status==200){setIsLogout(true)}
-  
+
+    if (axiosResponse.status == 200) {
+      setIsLogout(true);
+    }
   }
-  if(isLogout==true){return<Navigate to="/login" />}
+  if (isLogout == true) {
+    return <Navigate to="/login" />;
+  }
 
   return (
     <div className="sideBar">
@@ -57,7 +60,6 @@ function SideBar() {
           <Tooltip title="requete pour list users">
             <button onClick={handleClickTofindAllUsers}></button>
           </Tooltip>
-
           <IconButton>
             <ChatIcon />
           </IconButton>
