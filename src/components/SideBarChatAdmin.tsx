@@ -1,11 +1,12 @@
-import { Avatar, dividerClasses, Tooltip } from "@mui/material";
+import { Avatar, dividerClasses, IconButton, Tooltip } from "@mui/material";
 import { create } from "@mui/material/styles/createTransitions";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import api from "../utils/api";
 import "./SidebarChat.css";
 import instance from "../utils/api";
-
+import PostAddIcon from "@mui/icons-material/PostAdd";
+import DeleteForeverOutlinedIcon from "@mui/icons-material/DeleteForeverOutlined";
 function SideBarChatAdmin({ id, name, addNewChat, setUpdateRooms }: any) {
   const [seed, setSeed] = useState<any>("");
 
@@ -36,22 +37,37 @@ function SideBarChatAdmin({ id, name, addNewChat, setUpdateRooms }: any) {
   console.log("addNewChat", addNewChat);
 
   return !addNewChat ? (
-    <Link to={`/admin/ticket/${id}`}>
-      <Tooltip title="Clic pour voir la discussion">
-        <div className="sidebarChat">
-          <div className="sidebarChat__info">
-            <h2>{name}</h2>
-            <p>Dernier message ...</p>
-          </div>
-        </div>
+    <div className="sidebarChat__globale">
+      <Tooltip title="Supprimer le ticket">
+        <IconButton onClick={createChat} className="sidebarChat">
+          <DeleteForeverOutlinedIcon />
+        </IconButton>
       </Tooltip>
-    </Link>
+
+      <Tooltip title="Clic pour voir la discussion">
+        <Link to={`/admin/ticket/${id}`}>
+          <div className="sidebarChat">
+            <Avatar
+              src={`https://avatars.dicebear.com/api/human/${seed}.svg`}
+            />
+
+            <div className="sidebarChat__info">
+              <h2>{name}</h2>
+              <p>Dernier message ...</p>
+            </div>
+          </div>
+        </Link>
+      </Tooltip>
+    </div>
   ) : (
-    <Tooltip title="Clic pour créer un ticket">
-      <div onClick={createChat} className="sidebarChat">
-        <h3>Créer un ticket</h3>
-      </div>
-    </Tooltip>
+    <div className="sidebarChat__createTicket">
+      <h3>Créer un ticket</h3>
+      <Tooltip title="Clic pour créer un ticket">
+        <IconButton onClick={createChat} className="sidebarChat">
+          <PostAddIcon />
+        </IconButton>
+      </Tooltip>
+    </div>
   );
 }
 

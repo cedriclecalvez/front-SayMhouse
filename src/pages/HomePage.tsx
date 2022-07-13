@@ -4,11 +4,9 @@ import "./HomePage.css";
 
 const HomePage = () => {
   return (
-    <div>
       <div className="homepage__body">
         <SideBar />
       </div>
-    </div>
   );
 };
 

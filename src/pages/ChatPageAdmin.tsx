@@ -4,12 +4,10 @@ import "./HomePage.css";
 
 const ChatPageAdmin = () => {
   return (
-    <div className="homepage">
       <div className="homepage__body">
         <SideBarAdmin />
         <Chat />
       </div>
-    </div>
   );
 };
 

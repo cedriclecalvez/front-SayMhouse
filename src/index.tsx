@@ -15,13 +15,13 @@ const isAuth = async () => {
     const response = await api.get("/user/refresh");
     console.log("response refresh route", response);
 
-    const user: any = response.headers.authorization.substring(
-      7,
-      response.headers.authorization.length
-    );
+    // const user: any = response.headers.authorization.substring(
+    //   7,
+    //   response.headers.authorization.length
+    // );
 
-    store.dispatch(login(user));
-    // store.dispatch(login(response.data));
+    // store.dispatch(login(user));
+    store.dispatch(login(response.data));
   } catch (error: any) {
     console.log("refresh don't work", error);
 

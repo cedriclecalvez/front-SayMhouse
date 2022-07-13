@@ -1,5 +1,4 @@
 import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
-import ChatPage from "./pages/ChatPage";
 import { useSelector } from "react-redux";
 import { userStore } from "./utils/types/user.types";
 
@@ -9,6 +8,7 @@ import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import AdminPage from "./pages/AdminPage"
+import ChatPage from "./pages/ChatPage";
 import ChatPageAdmin from "./pages/ChatPageAdmin"
 
 const Router = () => {
@@ -23,12 +23,11 @@ const Router = () => {
           element={<PrivateRoute component={<HomePage />} />}
         />
         <Route path="/ticket/:roomId" element={<ChatPage />} />
-        <Route path="/admin/ticket/:roomId" element={<ChatPage />} />
+        <Route path="/admin/ticket/:roomId" element={<ChatPageAdmin />} />
         <Route
           path="/AdminPage"
           element={<PrivateRoute component={<AdminPage />} />}
         />
-        <Route path="/admin/ticket/:roomId" element={<ChatPageAdmin />} />
 
       </Routes>
     </BrowserRouter>

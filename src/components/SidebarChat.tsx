@@ -1,10 +1,11 @@
-import { Avatar, dividerClasses, Tooltip } from "@mui/material";
+import { Avatar, dividerClasses, IconButton, Tooltip } from "@mui/material";
 import { create } from "@mui/material/styles/createTransitions";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import api from "../utils/api";
 import "./SidebarChat.css";
 import instance from "../utils/api";
+import PostAddIcon from "@mui/icons-material/PostAdd";
 
 function SidebarChat({ id, name, addNewChat, setUpdateRooms }: any) {
   const [seed, setSeed] = useState<any>("");
@@ -25,7 +26,10 @@ function SidebarChat({ id, name, addNewChat, setUpdateRooms }: any) {
           "/ticket/register",
           roomNameObject
         );
-        console.log("axiosResponse to create a ticket ===>", axiosResponse.statusText);
+        console.log(
+          "axiosResponse to create a ticket ===>",
+          axiosResponse.statusText
+        );
         // to change state of parent child
         setUpdateRooms(true); //
       } catch (error) {
@@ -37,23 +41,24 @@ function SidebarChat({ id, name, addNewChat, setUpdateRooms }: any) {
 
   return !addNewChat ? (
     <Link to={`/ticket/${id}`}>
-       <Tooltip title="Clic pour voir la discussion">
-         <div className="sidebarChat">
-        <div className="sidebarChat__info">
-          <h2>{name}</h2>
-          <p>Dernier message ...</p>
+      <Tooltip title="Clic pour voir la discussion">
+        <div className="sidebarChat">
+          <div className="sidebarChat__info">
+            <h2>{name}</h2>
+            <p>Dernier message ...</p>
+          </div>
         </div>
-      </div>
-       </Tooltip>
-     
+      </Tooltip>
     </Link>
   ) : (
-    <Tooltip title="Clic pour créer un ticket">
-<div onClick={createChat} className="sidebarChat">
-      <h2>Créer un ticket</h2>
+    <div className="sidebarChat__createTicket">
+      <h3>Créer un ticket</h3>
+      <Tooltip title="Clic pour créer un ticket">
+        <IconButton onClick={createChat} className="sidebarChat">
+          <PostAddIcon />
+        </IconButton>
+      </Tooltip>
     </div>
-</Tooltip>
-    
   );
 }
 

@@ -14,6 +14,8 @@
   place-items: center;
   background-color: white;
   height: 100vh;
+  width: 100vw;
+
 }
 .homepage__body {
   display: flex;
