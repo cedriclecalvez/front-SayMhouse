@@ -9,6 +9,7 @@ import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import AdminPage from "./pages/AdminPage"
+import ChatPageAdmin from "./pages/ChatPageAdmin"
 
 const Router = () => {
   return (
@@ -22,11 +23,12 @@ const Router = () => {
           element={<PrivateRoute component={<HomePage />} />}
         />
         <Route path="/ticket/:roomId" element={<ChatPage />} />
+        <Route path="/admin/ticket/:roomId" element={<ChatPage />} />
         <Route
           path="/AdminPage"
           element={<PrivateRoute component={<AdminPage />} />}
         />
-        <Route path="/admin/ticket/:roomId" element={<ChatPage />} />
+        <Route path="/admin/ticket/:roomId" element={<ChatPageAdmin />} />
 
       </Routes>
     </BrowserRouter>
@@ -39,5 +41,5 @@ const PrivateRoute = ({ component: Component }: { component: JSX.Element }) => {
   const userState = useSelector((state: { user: userStore }) => state.user);
   console.log("check route ok");
 
-  return !userState.isLogged ? <Navigate to="/HomePage" /> : Component;
+  return !userState.isLogged ? <Navigate to="/" /> : Component;
 };

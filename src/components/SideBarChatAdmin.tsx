@@ -36,7 +36,7 @@ function SideBarChatAdmin({ id, name, addNewChat, setUpdateRooms }: any) {
   console.log("addNewChat", addNewChat);
 
   return !addNewChat ? (
-    <Link to={`/ticket/${id}`}>
+    <Link to={`/admin/ticket/${id}`}>
       <Tooltip title="Clic pour voir la discussion">
         <div className="sidebarChat">
           <div className="sidebarChat__info">

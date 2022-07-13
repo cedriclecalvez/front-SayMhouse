@@ -8,10 +8,13 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import SidebarChat from "./SidebarChat";
 import api from "../utils/api";
+import LogoutIcon from "@mui/icons-material/Logout";
+import { Navigate } from "react-router-dom";
 
 function SideBar() {
   const [rooms, setRooms] = useState<any[]>([]);
   const [addRoom, setAddRoom] = useState<boolean>(false);
+  const [isLogout, setIsLogout] = useState<boolean>(false);
 
   useEffect(() => {
     (async function () {
@@ -33,29 +36,39 @@ function SideBar() {
   }, [addRoom]);
 
   async function handleClickTofindAllUsers() {
-    const axiosResponse = await api.get("/user/allUsers");
+    const axiosResponse = await api.get("/user/auth/allUsers");
     console.log("axiosResponse users list==>", axiosResponse.data);
   }
+  async function handleClickToLogout() {
+    const axiosResponse = await api.get("/user/logout");
+    console.log("axiosResponse LOGOUT==>", axiosResponse);
+    console.log("axiosResponse", axiosResponse.status);
+    
+    if(axiosResponse.status==200){setIsLogout(true)}
+  
+  }
+  if(isLogout==true){return<Navigate to="/login" />}
 
   return (
     <div className="sideBar">
       <div className="sideBar__header">
         <Avatar />
         <div className="sidebar__headerRight">
-       <Tooltip title="requete pour list users">
+          <Tooltip title="requete pour list users">
+            <button onClick={handleClickTofindAllUsers}></button>
+          </Tooltip>
 
-          <button onClick={handleClickTofindAllUsers}></button>
-       </Tooltip>
-
-          <IconButton>
-            <DonutLargeIcon />
-          </IconButton>
           <IconButton>
             <ChatIcon />
           </IconButton>
           <IconButton>
             <MoreVertIcon />
           </IconButton>
+          <Tooltip title="LOGOUT">
+            <IconButton>
+              <LogoutIcon onClick={handleClickToLogout}></LogoutIcon>
+            </IconButton>
+          </Tooltip>
         </div>
       </div>
 

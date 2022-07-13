@@ -2,14 +2,15 @@ import Chat from "../components/Chat";
 import SideBarAdmin from "../components/SideBarAdmin";
 import "./HomePage.css";
 
-const AdminPage = () => {
+const ChatPageAdmin = () => {
   return (
-    <div>
+    <div className="homepage">
       <div className="homepage__body">
         <SideBarAdmin />
+        <Chat />
       </div>
     </div>
   );
 };
 
-export default AdminPage;
+export default ChatPageAdmin;

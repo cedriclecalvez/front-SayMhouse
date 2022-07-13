@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./SideBar.css";
-import "../../css/index.css";
+import "../css/index.css";
 import { Avatar, IconButton } from "@mui/material";
 import ChatIcon from "@mui/icons-material/Chat";
 import DonutLargeIcon from "@mui/icons-material/DonutLarge";
@@ -16,7 +16,7 @@ function SideBarAdmin() {
   // to display directly the new list of rooms when user create in the child component
   useEffect(() => {
     (async function () {
-      const axiosResponse = await api.get("/ticket/list");
+      const axiosResponse = await api.get("/ticket/auth/list");
       console.log("axiosResponse room list==>", axiosResponse.data);
       setRooms(axiosResponse.data);
       console.log("response rooms list", rooms);
@@ -26,7 +26,7 @@ function SideBarAdmin() {
 
   useEffect(() => {
     (async function () {
-      const axiosResponse = await api.get("/ticket/list");
+      const axiosResponse = await api.get("/ticket/auth/list");
       console.log("axiosResponse room list==>", axiosResponse.data);
       setRooms(axiosResponse.data);
       console.log("response rooms list after add room", rooms);
@@ -34,7 +34,7 @@ function SideBarAdmin() {
   }, []);
 
   async function handleClickTofindAllUsers() {
-    const axiosResponse = await api.get("/user/allUsers");
+    const axiosResponse = await api.get("/user/auth/allUsers");
     console.log("axiosResponse users list==>", axiosResponse.data);
   }
 

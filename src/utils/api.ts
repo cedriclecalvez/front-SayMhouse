@@ -10,17 +10,15 @@ const instance = axios.create({
 
 instance.interceptors.request.use((request) => {
   const state = store.getState();
-  console.log("state from interceptors: ",state.user.user);
-  
-  
+  // console.log("state from interceptors: ", state.user.user);
+
   if (request.headers)
-    request.headers[
-      "Authorization"
-    ] = `Bearer ${state.user.user&&state.user.user}`;
-    // ] = `Bearer ${state.user.user?.access_token}`;
+    request.headers["Authorization"] = `Bearer ${
+      state.user.user && state.user.user
+    }`;
+  // ] = `Bearer ${state.user.user?.access_token}`;
   return request;
 });
-
 
 instance.interceptors.response.use(
   (response) => {
@@ -35,6 +33,12 @@ instance.interceptors.response.use(
     try {
       // ask refresh token
       const response = await instance.get("/user/refresh");
+      // const user: any = response.headers.authorization.substring(
+      //   7,
+      //   response.headers.authorization.length
+      // );
+  
+      // store.dispatch(login(user));
       store.dispatch(login(response.data));
       // add field hasRefreshToken
       error.hasRefreshToken = true;

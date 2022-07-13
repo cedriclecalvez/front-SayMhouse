@@ -11,15 +11,20 @@ import api from "./utils/api";
 const isAuth = async () => {
   try {
     console.log("you asked to refresh");
-    
-    const response = await api.get('/user/refresh');
-    console.log("response refresh route",response);
-    console.log("response refresh route",response.data);
-    
-    store.dispatch(login(response.data));
+
+    const response = await api.get("/user/refresh");
+    console.log("response refresh route", response);
+
+    const user: any = response.headers.authorization.substring(
+      7,
+      response.headers.authorization.length
+    );
+
+    store.dispatch(login(user));
+    // store.dispatch(login(response.data));
   } catch (error: any) {
-    console.log("refresh don't work",error);
-    
+    console.log("refresh don't work", error);
+
     store.dispatch(logout());
   }
 };
