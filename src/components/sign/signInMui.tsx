@@ -77,7 +77,7 @@ export default function SignInMui() {
   };
 
   if (responseBddStatus === 200) {
-    return <Navigate to="/AdminPage" />
+    return <Navigate to="/HomePage" />
   }
 
   return (

@@ -33,13 +33,13 @@ instance.interceptors.response.use(
     try {
       // ask refresh token
       const response = await instance.get("/user/refresh");
-      // const user: any = response.headers.authorization.substring(
-      //   7,
-      //   response.headers.authorization.length
-      // );
+      const user: any = response.headers.authorization.substring(
+        7,
+        response.headers.authorization.length
+      );
   
-      // store.dispatch(login(user));
-      store.dispatch(login(response.data));
+      store.dispatch(login(user));
+      // store.dispatch(login(response.data));
       // add field hasRefreshToken
       error.hasRefreshToken = true;
       return Promise.reject(error);

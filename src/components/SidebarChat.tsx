@@ -1,14 +1,19 @@
 import { Avatar, dividerClasses, IconButton, Tooltip } from "@mui/material";
 import { create } from "@mui/material/styles/createTransitions";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import api from "../utils/api";
 import "./SidebarChat.css";
 import instance from "../utils/api";
 import PostAddIcon from "@mui/icons-material/PostAdd";
+import { useDispatch } from "react-redux";
+import { logout } from "../store/user.reducer";
 
 function SidebarChat({ id, name, addNewChat, setUpdateRooms }: any) {
   const [seed, setSeed] = useState<any>("");
+
+  const dispatch = useDispatch();
+  let navigate = useNavigate();
 
   // function to return an random avatar
   useEffect(() => {
@@ -32,10 +37,16 @@ function SidebarChat({ id, name, addNewChat, setUpdateRooms }: any) {
         );
         // to change state of parent child
         setUpdateRooms(true); //
-      } catch (error) {
+      } catch (error: any) {
         console.error(error);
+        if (error.hasRefreshToken) {
+          createChat();
+        } else {
+          dispatch(logout());
+          navigate("/");
+        }
+        // do some stuff
       }
-      // do some stuff
     }
   };
 
