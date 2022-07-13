@@ -1,9 +1,12 @@
-.register__img{
-    object-fit: contain;
-    /* height: 400px; */
-    max-width: 100%;
-    place-items: center;
-   
-  
-    
-  }
+.register__img {
+  object-fit: contain;
+  /* height: 400px; */
+  max-width: 100%;
+  place-items: center;
+}
+.alertRegister__img {
+  max-width: 30%;
+  justify-content:center;
+  align-items: center;
+  /* place-items: center; */
+}

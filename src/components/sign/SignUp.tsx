@@ -34,7 +34,6 @@ export default function SignUp() {
   );
   const [responseBddStatus, setResponseBddStatus] = React.useState<Number>(404);
 
-
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -89,7 +88,6 @@ export default function SignUp() {
 
       if (axiosResponse.status === 201) {
         setResponseBddStatus(201);
-      
       } else {
         console.log("save data doesnt work");
       }
@@ -100,16 +98,32 @@ export default function SignUp() {
 
   if (responseBddStatus === 201) {
     return (
-      <Navigate to="/login"/>
+      <Stack spacing={2} alignItems={"center"}>
+        <img
+          className="alertRegister__img"
+          src="https://scalebranding.com/wp-content/uploads/2021/08/Chat-House-Logo.jpg"
+          alt=""
+        />
+
+        <Alert
+          action={
+            <Button color="inherit" size="small">
+              <Lien to="/login">Se logger</Lien>
+            </Button>
+          }
+        >
+          L'inscription est terminée. Se logger pour se connecter à
+          l'application
+        </Alert>
+      </Stack>
+      // <Navigate to="/login"/>
     );
- 
   }
 
   return (
     <ThemeProvider theme={theme}>
       <Grid container alignItems="center" justifyContent="center">
-   
-        <Grid item xs={4} >
+        <Grid item xs={4}>
           <img
             className="register__img"
             src="https://scalebranding.com/wp-content/uploads/2021/08/Chat-House-Logo.jpg"
